@@ -23,8 +23,28 @@ opener:Toggle('Auto Egg', function(state)
 	if state then
 	getgenv().autoEgg = true
 		while getgenv().autoEgg == true do
-			
+		local args = {
+			[1] = "basic"
+		}
+
+		game:GetService("ReplicatedStorage").Aero.AeroRemoteServices.EggService.Purchase:FireServer(unpack(args))
+		wait(8)
 		end
-	else getgenv().autoEgg = false
+		else getgenv().autoEgg = false
+	end
+end)
+
+opener:Toggle('Auto Rebirth', function(state)
+	if state then
+	getgenv().autoRebirth = true
+	while getgenv().autoRebirth == true do
+		local args = {
+			[1] = 10000
+		}
+
+		game:GetService("ReplicatedStorage").Aero.AeroRemoteServices.RebirthService.BuyRebirths:FireServer(unpack(args))
+		wait(1)
+		end
+		else getgenv().autoRebirth = false
 	end
 end)
